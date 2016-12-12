@@ -1,5 +1,10 @@
+
+import { NavController,LoadingController,AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+/*tutorial*/
+import { FormBuilder, Validators } from '@angular/forms';
+import { AuthData } from '../../providers/auth-data';
+import { HomePage } from '../home/home';
 
 /*
   Generated class for the Login page.
@@ -12,8 +17,14 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-
-  constructor(public navCtrl: NavController) {
+  public loginForm;
+  constructor(public nav: NavController, public authData: AuthData, 
+    public formBuilder: FormBuilder,public alertCtrl: AlertController, 
+    public loadingCtrl: LoadingController) {
+  	 this.loginForm = formBuilder.group({
+        email: ['', Validators.compose([Validators.required])],
+        password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+      });
   }
 
   ionViewDidLoad() {

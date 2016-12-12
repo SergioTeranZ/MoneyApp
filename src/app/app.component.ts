@@ -6,14 +6,17 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 
 /*imports de Sergio*/
-import firebase from 'firebase';
+  /*paginas*/
+  import firebase from 'firebase';
+  /*providers*/
+  import { AuthData } from '../providers/auth-data';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
 
-  rootPage : any;
+  rootPage = LoginPage;
   
   constructor(platform: Platform) {
     firebase.initializeApp({
@@ -26,8 +29,10 @@ export class MyApp {
 
     
     firebase.auth().onAuthStateChanged((user) => {
-      if (!user) {this.rootPage = LoginPage;}
-      console.log('user:',user);
+      if (!user) {
+        /*this.rootPage = LoginPage;*/
+        console.log('user es:',user);
+      }
     }); 
     
 
