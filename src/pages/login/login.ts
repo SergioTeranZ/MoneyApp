@@ -1,11 +1,11 @@
-
-import { NavController,LoadingController,AlertController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
-/*tutorial*/
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
+import { SignupPage } from '../signup/signup';
 import { HomePage } from '../home/home';
-
+import { ResetPasswordPage } from '../reset-password/reset-password';
+/*import { EmailValidator } from '../../validators/email';*/
 /*
   Generated class for the Login page.
 
@@ -17,18 +17,66 @@ import { HomePage } from '../home/home';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  public loginForm;
+ 	public loginForm;
+  emailChanged: boolean = false;
+  passwordChanged: boolean = false;
+  submitAttempt: boolean = false;
+  loading: any;
+
   constructor(public nav: NavController, public authData: AuthData, 
     public formBuilder: FormBuilder,public alertCtrl: AlertController, 
     public loadingCtrl: LoadingController) {
+
   	 this.loginForm = formBuilder.group({
         email: ['', Validators.compose([Validators.required])],
         password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
       });
+  } // fin constructor
+
+  elementChanged(input){
+    let field = input.inputControl.name;
+    this[field + "Changed"] = true;
   }
 
   ionViewDidLoad() {
-    console.log('Hello LoginPage Page');
+    //console.log('Hello LoginPage Page');
   }
 
+	loginUser(){
+	  this.submitAttempt = true;
+
+	  if (!this.loginForm.valid){
+	    console.log(this.loginForm.value);
+	  } else {
+	    this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password).then( authData => {
+	    this.nav.setRoot(HomePage);
+	  }, error => {
+	    this.loading.dismiss().then( () => {
+	      let alert = this.alertCtrl.create({
+	        message: error.message,
+	        buttons: [
+	          {
+	            text: "Ok",
+	            role: 'cancel'
+	          }
+	        ]
+	      });
+	      alert.present();
+	    });
+	  });
+
+	  this.loading = this.loadingCtrl.create({
+	    dismissOnPageChange: true,
+	  });
+	  this.loading.present();
+	  }
+	}
+
+	goToSignup(){
+	  this.nav.push(SignupPage);
+	}
+
+	goToResetPassword(){
+ 	 	this.nav.push(ResetPasswordPage);
+	}
 }

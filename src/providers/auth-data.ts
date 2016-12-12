@@ -16,7 +16,7 @@ export class AuthData {
   public userProfile: any;
   
   constructor() {
-    console.log('Hello AuthData Provider');
+    //console.log('Hello AuthData Provider');
 	  this.fireAuth = firebase.auth();
 	  this.userProfile = firebase.database().ref('/userProfile');    
   }
@@ -36,6 +36,9 @@ export class AuthData {
 	  return this.fireAuth.sendPasswordResetEmail(email);
 	}	
 
+	logoutUser(): any {
+	  return this.fireAuth.signOut();
+	}
 
 
 }

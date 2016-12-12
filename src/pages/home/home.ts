@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
+import { SignupPage } from '../signup/signup';
+import { LoginPage } from '../login/login';
 
 
 @Component({
@@ -9,8 +11,15 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public nav: NavController) {
     
   }
 
+	irARegistro(){
+	  this.nav.push(SignupPage);
+	}
+
+	irALogin(){
+ 	 	this.nav.push(LoginPage);
+	}
 }
