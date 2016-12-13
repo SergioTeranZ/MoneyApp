@@ -2,7 +2,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Login
+      Inicio de Sesion
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -19,7 +19,7 @@
         [class.invalid]="!loginForm.controls.email.valid && (emailChanged || submitAttempt)"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && (emailChanged || submitAttempt)">
-      <p>Please enter a valid email.</p>
+      <p>Porfavor introduzca un correo valido.</p>
     </ion-item>
 
     <ion-item>
@@ -29,7 +29,7 @@
         [class.invalid]="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  && (passwordChanged || submitAttempt)">
-      <p>Your password needs more than 6 characters.</p>
+      <p>Tu contraseña necesita mas de 6 caracteres.</p>
     </ion-item>
 
     <button ion-button block type="submit">
@@ -39,11 +39,11 @@
   </form>
 
     <button ion-button block clear (click)="goToSignup()">
-      Create a new account
+      Crear una nueva cuenta
     </button>
 
     <button ion-button block clear (click)="goToResetPassword()">
-      I forgot my password
+      Olvide mi contraseña
     </button>
 
 </ion-content>
