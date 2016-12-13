@@ -18,7 +18,7 @@ export class StartPage {
   constructor(public nav: NavController) {}
 
   ionViewDidLoad() {
-    /*console.log('Hello StartPage Page');*/
+    console.log('Hello StartPage Page');
   }
 
 

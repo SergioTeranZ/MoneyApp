@@ -16,6 +16,9 @@ export class HomePage {
     
   }
 
+  ionViewDidLoad(){
+  	console.log("Hola desde el Home")
+  }
 	logOut(){
 	  this.authData.logoutUser().then(() => {
 	    this.nav.setRoot(StartPage);

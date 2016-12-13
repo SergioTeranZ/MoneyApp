@@ -14,3 +14,36 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+/* Tema Azul */
+$color-pri : #01378D;
+$color-sec : #18A0DE;
+
+/* Tema amarillo */
+/* $color-pri : #FFCA28;
+$color-sec : #FFA001; */
+
+ion-app.md,ion-content{
+    background: $color-pri; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(135deg,$color-pri, $color-sec); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(135deg,$color-pri, $color-sec); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(135deg,$color-pri, $color-sec); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(135deg,$color-pri, $color-sec); /* Standard syntax */
+}
+
+.toolbar-background-md{
+	background: none;
+	border-style: none;
+}
+
+ion-header::after {
+    background-image: none !important;
+}
+
+.toolbar-title-md{
+	text-align: center;
+}
+
+.bar-button-default-md,.toolbar-title-md{
+	color: #fff;
+}

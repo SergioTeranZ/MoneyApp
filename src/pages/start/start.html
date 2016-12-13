@@ -6,8 +6,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-footer>
+	<ion-grid no-padding>
+		<ion-row>
+			
+			<ion-col width-50 style="background-color: rgba(0,0,0,0.4);margin-right: 0.6px;">
+				<button ion-button block clear style="color: #fff" (click)="irALogin()"><b>Iniciar Sesion</b></button>
+			</ion-col>
 
-  <button ion-button block clear (click)="irALogin()">Iniciar Sesion</button>
-  <button ion-button block clear (click)="irARegistro()">Registro</button>
-</ion-content>
+			<ion-col width-50 style="background-color: rgba(0,0,0,0.4);margin-left: 0.6px;">
+				<button ion-button block clear style="color: #fff" (click)="irARegistro()"><b>Registro</b></button>
+			</ion-col>
+
+		</ion-row>
+	</ion-grid>
+</ion-footer>

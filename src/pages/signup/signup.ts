@@ -26,6 +26,10 @@ export class SignupPage {
     })
   }
 
+  ionViewDidLoad(){
+    console.log("Hola desde el Registro")
+  }
+
   /**
    * Receives an input field and sets the corresponding fieldChanged property to 'true' to help with the styles.
    */

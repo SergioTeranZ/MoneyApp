@@ -39,7 +39,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    //console.log('Hello LoginPage Page');
+    console.log('Hello LoginPage Page');
   }
 
 	loginUser(){

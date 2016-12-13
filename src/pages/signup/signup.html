@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar>
     <ion-title>
       Crear cuenta
     </ion-title>
@@ -8,11 +8,12 @@
 
 
 <ion-content padding>
-  <img src="http://placehold.it/300x100">
+<ion-card style="border-radius: 25px">
+
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
 
     <ion-item>
-      <ion-label stacked>Email</ion-label>
+      <ion-label stacked>Correo</ion-label>
       <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
         placeholder="Correo"
         [class.invalid]="!signupForm.controls.email.valid && (emailChanged || submitAttempt)"></ion-input>
@@ -30,11 +31,14 @@
     <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid  && (passwordChanged || submitAttempt)">
       <p>Tu contraseña necesita mas de 6 caracteres.</p>
     </ion-item>
-
-    <button ion-button block type="submit">
+    
+    <ion-row style="border-top: 0.1px solid #B7B7B7;">
+    <ion-col width-100>
+    <button ion-button block clear type="submit">
       Crear Cuenta
     </button>
-
+    </ion-col>
+    </ion-row>
   </form>
-
+</ion-card>
 </ion-content>

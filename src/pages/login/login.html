@@ -1,6 +1,6 @@
 
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar>
     <ion-title>
       Inicio de Sesion
     </ion-title>
@@ -8,14 +8,13 @@
 </ion-header>
 
 <ion-content padding>
-  <img src="http://placehold.it/300x100">
-
+<ion-card style="border-radius: 25px">
   <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
 
     <ion-item>
-      <ion-label stacked>Email</ion-label>
+      <ion-label stacked>Correo</ion-label>
       <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
-        placeholder="Your email address"
+        placeholder="Correo"
         [class.invalid]="!loginForm.controls.email.valid && (emailChanged || submitAttempt)"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && (emailChanged || submitAttempt)">
@@ -23,27 +22,37 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Password</ion-label>
+      <ion-label stacked>Contraseña</ion-label>
       <ion-input #password formControlName="password" type="password" (change)="elementChanged(password)"
-        placeholder="Your password"
+        placeholder="Contraseña"
         [class.invalid]="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  && (passwordChanged || submitAttempt)">
       <p>Tu contraseña necesita mas de 6 caracteres.</p>
     </ion-item>
 
-    <button ion-button block type="submit">
-      Login
-    </button>
+    <ion-row>
+    <ion-col width-100 padding style="text-align: center;">
+    <a (click)="goToResetPassword()">
+      Olvide mi contraseña
+    </a>
+    </ion-col>
+    </ion-row>
 
+    <ion-row style="border-top: 0.1px solid #B7B7B7;">
+    <ion-col width-50>
+      <button ion-button block clear type="submit">
+        Iniciar Sesion
+      </button>
+    </ion-col>
+
+    <ion-col width-50>
+    <button ion-button block clear (click)="goToSignup()" style="border-left: 0.5px solid #B7B7B7">
+      Crear Cuenta
+    </button>
+    </ion-col>
+    </ion-row>
   </form>
 
-    <button ion-button block clear (click)="goToSignup()">
-      Crear una nueva cuenta
-    </button>
-
-    <button ion-button block clear (click)="goToResetPassword()">
-      Olvide mi contraseña
-    </button>
-
+</ion-card>
 </ion-content>

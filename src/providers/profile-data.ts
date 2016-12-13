@@ -1,18 +1,70 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import firebase from 'firebase';
 
-/*
-  Generated class for the ProfileData provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class ProfileData {
+  // Nodo de la BD
+  userProfile: any; 
+  // nodo de ususario actual
+  currentUser: any; 
 
-  constructor(public http: Http) {
-    console.log('Hello ProfileData Provider');
+  constructor() {
+    this.currentUser = firebase.auth().currentUser;
+    this.userProfile = firebase.database().ref('/userProfile');
   }
 
+  /**
+  * funcion getUserProfile no recibe parametros
+  * retorma una referencia a la BD al uid del usuario actual
+  * se usa par atraer la info del usuario a la pagina
+  */
+  getUserProfile(): any {
+    return this.userProfile.child(this.currentUser.uid);
+  }
+
+  /**
+  * Actualiza nombre y apellido del usuario
+  */
+  updateName(firstName: string, lastName: string): any {
+    return this.userProfile.child(this.currentUser.uid).update({
+      firstName: firstName,
+      lastName: lastName,
+    });
+  }
+
+  /**
+  * Actualiza fecha de nacimiento del usuario
+  */
+  updateDOB(birthDate: string): any {
+    return this.userProfile.child(this.currentUser.uid).update({
+      birthDate: birthDate,
+    });
+  }
+
+  /**
+  * recibe el email del usuario
+  * cambia el correo en el user autenticado en firebase
+  * luedo de cambair el correo del usuario autenticado, lo cambia en la BD
+  */
+  updateEmail(newEmail: string): any {
+    this.currentUser.updateEmail(newEmail).then(() => {
+      this.userProfile.child(this.currentUser.uid).update({
+        email: newEmail
+      });
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  /**
+  * Cambia la contrasena del usuario autenticado
+  */
+  updatePassword(newPassword: string): any {
+    this.currentUser.updatePassword(newPassword).then(() => {
+      console.log("Se cambio la contrasena");
+    }, (error) => {
+      console.log(error);
+    });
+  }
 }

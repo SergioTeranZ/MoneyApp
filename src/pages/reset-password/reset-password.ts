@@ -25,6 +25,10 @@ export class ResetPasswordPage {
     })
   }
 
+  ionViewDidLoad(){
+  	console.log("Hola desde el Reset password")
+  }
+
   elementChanged(input){
     let field = input.inputControl.name;
     this[field + "Changed"] = true;
