@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { NavController } from 'ionic-angular';
 
 /*imports de Sergio*/
 import { HomePage } from  '../pages/home/home';

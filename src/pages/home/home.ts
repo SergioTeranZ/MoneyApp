@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
-import { LoginPage } from '../login/login';
+import { StartPage } from '../start/start';
+import { AuthData } from '../../providers/auth-data';
 
 
 @Component({
@@ -11,8 +12,14 @@ import { LoginPage } from '../login/login';
 })
 export class HomePage {
 
-  constructor(public nav: NavController) {
+  constructor(public nav: NavController,public authData: AuthData) {
     
   }
+
+	logOut(){
+	  this.authData.logoutUser().then(() => {
+	    this.nav.setRoot(StartPage);
+	  });
+	}
 
 }

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 /*imports de Sergio*/
+import { NavController } from 'ionic-angular';
+
 import { HomePage } from '../pages/home/home';
 import { StartPage } from '../pages/start/start';
 import { LoginPage } from '../pages/login/login';
@@ -15,7 +17,8 @@ import firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage : any = StartPage;
+  @ViewChild('myNav') nav: NavController
+  rootPage : any = HomePage;
 
   constructor(platform: Platform) {
     firebase.initializeApp({
@@ -28,8 +31,8 @@ export class MyApp {
 
     firebase.auth().onAuthStateChanged(user =>{
       if (!user) {
-        this.rootPage = LoginPage;
         console.log('hip');
+        this.nav.push(StartPage);
       }
     });
 
