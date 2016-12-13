@@ -15,11 +15,4 @@ export class HomePage {
     
   }
 
-	irARegistro(){
-	  this.nav.push(SignupPage);
-	}
-
-	irALogin(){
- 	 	this.nav.push(LoginPage);
-	}
 }

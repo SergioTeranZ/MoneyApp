@@ -4,6 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 /*imports de Sergio*/
 import { HomePage } from '../pages/home/home';
+import { StartPage } from '../pages/start/start';
 import { LoginPage } from '../pages/login/login';
 
 import firebase from 'firebase';
@@ -14,7 +15,7 @@ import firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage : any = HomePage;
+  rootPage : any = StartPage;
 
   constructor(platform: Platform) {
     firebase.initializeApp({

@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 
 /*imports de Sergio*/
 import { HomePage } from  '../pages/home/home';
+import { StartPage } from  '../pages/start/start';
 import { LoginPage } from '../pages/login/login';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
@@ -16,6 +17,7 @@ import { ProfileData } from '../providers/profile-data';
   declarations: [
     MyApp,
     HomePage,
+    StartPage,
     LoginPage,
     SignupPage,
     ResetPasswordPage,
@@ -27,6 +29,7 @@ import { ProfileData } from '../providers/profile-data';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    StartPage,
     HomePage,
     LoginPage,
     SignupPage,
