@@ -18,7 +18,8 @@
 /* Tema Azul */
 $color-pri : #01378D;
 $color-sec : #18A0DE;
-
+$gris : #BDBDBD;
+$plomo : #191A20;
 /* Tema amarillo */
 /* $color-pri : #FFCA28;
 $color-sec : #FFA001; */
@@ -44,6 +45,32 @@ ion-header::after {
 	text-align: center;
 }
 
-.bar-button-default-md,.toolbar-title-md{
+.bar-button-default-md,.toolbar-title-md,ion-label,ion-label.label-md>span#birthdate-title,.datetime-text{
 	color: #fff;
+}
+
+.item-md{
+	background-color: rgba(0,0,0,0);
+	border-bottom: 0.1px solid #fff;
+}
+
+.item-md.list-header{
+	border:none;
+}
+
+.list-md .item-block .item-inner,.item-md.item-block .item-inner{
+	border-bottom: none;
+}
+
+ion-col.placeholder-profile{
+	color:$gris;
+}
+
+ion-card>ion-item>div>div>ion-label.label.label-md{
+	color: $plomo;
+}
+
+ion-card>ion-item>div>div>ion-label.label.label-md>.saldo{
+	color: $color-sec;
+	font-size: 3em;
 }

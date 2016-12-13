@@ -19,8 +19,7 @@ export class HomePage {
 
     this.profileData.getUserProfile().on('value', (data) => {
       this.userProfile = data.val();
-      console.log('saldo:',this.userProfile.saldo);
-      //this.saldo = this.userProfile.saldo;
+      console.log('userProfile:',this.userProfile);
       this.birthDate = this.userProfile.birthDate;
     });
 
@@ -114,6 +113,7 @@ export class HomePage {
 	logOut(){
 	  this.authData.logoutUser().then(() => {
 	    this.nav.setRoot(StartPage);
+      this.userProfile = null;
 	  });
 	}
 

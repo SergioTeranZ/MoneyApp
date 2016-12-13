@@ -12,19 +12,26 @@
 </ion-header>
 
 <ion-content>
+  <ion-col width-50 style="margin-left: 25%;"> 
   <ion-card style="border-radius: 25px;">
-  <ion-item>
-  Saldo disponible
-  </ion-item>
-  <ion-item>
-     <h1> {{userProfile?.saldo}}</h1>
+  <ion-item style="text-align: center;vertical-align: middle;">
+     <span class="saldo"><ion-icon name="star-outline"></ion-icon> {{userProfile?.saldo}}</span>
 
   </ion-item>
+  <ion-row style="border-top: 0.1px solid #B7B7B7;">
+      <ion-col width-50 style="margin-left:25%;">
+      <button ion-button block clear>
+        <ion-icon name="time" style="font-size: 2em;margin-right: 0.5em;"></ion-icon><b> Historial</b>
+      </button>
+    </ion-col>
+  </ion-row>
+
   </ion-card>
+  </ion-col>
 
   <ion-list>
-    <ion-list-header>
-      Informacion Personal
+    <ion-list-header style="font-size: 2em;">
+      Información Personal
     </ion-list-header>
 
     <ion-item (click)="updateName()">
@@ -46,8 +53,12 @@
     </ion-item>
 
     <ion-item>
-      <ion-label class="dob-label">Fecha de Nacimiento</ion-label>
-      <ion-datetime displayFormat="MMM D, YYYY" pickerFormat="D MMM YYYY"
+      <ion-label style="max-width: 50%;">
+      <span id="birthdate-title">  
+      Fecha de Nacimiento
+      </span>
+      </ion-label>
+      <ion-datetime style="padding-left: 0" displayFormat="MMM D, YYYY" pickerFormat="D MMM YYYY"
         [(ngModel)]="birthDate" (ionChange)="updateDOB(birthDate)"></ion-datetime>
     </ion-item>
 
