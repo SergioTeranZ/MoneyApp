@@ -31,7 +31,7 @@ export class MyApp {
 
     firebase.auth().onAuthStateChanged(user =>{
       if (user) {
-        this.nav.push(HomePage);
+        this.nav.setRoot(HomePage);
       }
     });
 
