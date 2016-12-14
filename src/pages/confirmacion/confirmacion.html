@@ -14,7 +14,41 @@
 
 
 <ion-content padding>
+	<ion-card style="border-radius: 25px;">
     <ion-list-header style="font-size: 2em;">
-			{{userProfile.firstName}} quiere transferir ${{valor}} a {{userSelected.firstName}}
+			Quieres transferir 
+			<br>
+			<span class="valor">
+			${{valor}}
+				
+			</span>
+			<br>
+			al usuario
+			<span class="nombre">	
+			<br>
+			{{userSelected.firstName}}
+			{{userSelected.lastName}}
+			</span>
+			<br>
+			<span class="correo">		
+				{{userSelected.email}}
+			</span>
+
 		</ion-list-header>
+
+ <ion-row style="border-top: 0.1px solid #B7B7B7;">
+    <ion-col width-50>
+      <button ion-button block clear (click)="cancelTransfer()">
+        Cancelar
+      </button>
+    </ion-col>
+
+    <ion-col width-50>
+    <button ion-button block clear style="border-left: 0.5px solid #B7B7B7" (click)="proceedTranfer()">
+      <b>Transferir</b>
+    </button>
+    </ion-col>
+    </ion-row>
+
+	</ion-card>
 </ion-content>

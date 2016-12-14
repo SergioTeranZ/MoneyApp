@@ -1,3 +1,23 @@
+$color-pri : #01378D;
 page-confirmacion {
+	ion-label.label.label-md{
+		color:#2f2f2f;
+		text-align: center;
+	}
+	ion-label.label.label-md>span{
+		color: $color-pri;
+	}
+	ion-label.label.label-md>span.valor{
+		font-size: 4em;
+	}
+	
+	ion-label.label.label-md>span.nombre{
+		font-size: 1.5em;
+	}
+
+	ion-label.label.label-md>span.correo{
+		font-size: 0.7em;
+		color: #737373;
+	}
 
 }
