@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ProfileData } from '../../providers/profile-data';
 import { FormControl } from '@angular/forms';
+import { ConfirmacionPage } from '../confirmacion/confirmacion';
 /*
   Generated class for the Transferir page.
 
@@ -88,5 +89,10 @@ export class TransferirPage {
   		}
   	}
   	this.diff = this.saldo - (+this.valor);
+  }
+
+  goToConfirmacion(userProfile,userSelected,valor){
+    this.nav.push(ConfirmacionPage,{userProfile: userProfile,userSelected:userSelected,valor:valor});
+
   }
 }

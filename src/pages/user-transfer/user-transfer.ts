@@ -34,7 +34,7 @@ export class UserTransferPage {
 		this.userRef.on('value', usersList => {
 		  let users = [];
 		  usersList.forEach( user => {
-		    users.push(user.val());
+		  	if(user.val().email != this.currUser.email){users.push(user.val());}
 		  });
 		  this.userList = users;
 		  this.loadedUserList = users;
@@ -78,7 +78,6 @@ export class UserTransferPage {
 
 	selectUser(user){
 		this.userSelected = user;
-		console.log('->',this.userSelected);
 	}
 
 }

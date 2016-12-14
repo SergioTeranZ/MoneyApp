@@ -12,6 +12,7 @@ import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { SignupPage } from '../pages/signup/signup';
 import { TransferirPage } from '../pages/transferir/transferir';
 import { UserTransferPage } from '../pages/user-transfer/user-transfer';
+import { ConfirmacionPage } from '../pages/confirmacion/confirmacion';
 
 import { AuthData } from '../providers/auth-data';
 import { ProfileData } from '../providers/profile-data';
@@ -28,7 +29,8 @@ import { UsersData } from '../providers/users-data';
     ResetPasswordPage,
     PerfilPage,
     TransferirPage,
-    UserTransferPage
+    UserTransferPage,
+    ConfirmacionPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -43,7 +45,8 @@ import { UsersData } from '../providers/users-data';
     ResetPasswordPage,
     PerfilPage,
     TransferirPage,
-    UserTransferPage    
+    UserTransferPage,
+    ConfirmacionPage    
   ],
   providers: [
     [{provide: ErrorHandler, useClass: IonicErrorHandler}],
