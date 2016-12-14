@@ -28,7 +28,6 @@ export class ConfirmacionPage {
     this.userRef = firebase.database().ref('/userProfile');
 
 		this.userRef.on('value', usersList => {
-		  let users = [];
 		  usersList.forEach( user => {
 		  	if(user.val().email == this.userSelected.email){this.userSelected = user.val(); this.userSelected.key = user.getKey()};
 		  	if(user.val().email == this.userProfile.email) {this.userProfile  = user.val(); this.userProfile.key  = user.getKey()};

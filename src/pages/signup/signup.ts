@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
 import { HomePage } from '../home/home';
-import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-signup',

@@ -7,7 +7,6 @@ import { NavController } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
 import { StartPage } from '../pages/start/start';
-import { LoginPage } from '../pages/login/login';
 
 import firebase from 'firebase';
 

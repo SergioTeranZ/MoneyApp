@@ -48,7 +48,7 @@ export class TransferirPage {
     console.log('Hello TransferirPage Page');
   }
 
-  saldoSuficiente(f : FormControl){
+  saldoSuficiente(){
   	return ( +this.valor < this.saldo)? true : false;
   }
 
