@@ -27,7 +27,7 @@ export class TransferirPage {
   numberChanged: boolean = false;
   diff: any;
 
-  constructor(public nav: NavController,public navParams: NavParams,public profileData: ProfileData,public formBuilder: FormBuilder,) {
+  constructor(public nav: NavController,public navParams: NavParams,public profileData: ProfileData,public formBuilder: FormBuilder) {
   	this.nav = nav;
     this.profileData = profileData;
 
@@ -36,7 +36,7 @@ export class TransferirPage {
     this.saldo = this.userProfile.saldo;
 
      this.numForm = formBuilder.group({
-        numero: ['', Validators.compose([,Validators.required])]
+        numero: ['', Validators.compose([Validators.required])]
       });
   }
 
