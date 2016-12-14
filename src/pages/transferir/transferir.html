@@ -17,6 +17,12 @@
 		<ion-input #numero formControlName="numero" type="number" (ngModel)="valor" [value]="valor" (change)="numChanged()"placeholder="00.00" [class.invalid]="!saldoSuficiente() && (numberChanged || submitAttempt)" id="numbers-input">
 		</ion-input>
 	</ion-row>
+	
+	<ion-row style="font-size: 1.5em;margin-top: -1.5em;text-align: center;">
+	<ion-label *ngIf="saldoSuficiente()" class='wrong-cant'>Te quedan {{diff}}</ion-label>
+	<ion-label *ngIf="!saldoSuficiente()" >Te quedan {{diff}}</ion-label>
+	</ion-row>
+
 	<ion-row>
 		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(1,numero)">1</button></ion-col>
 		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(2,numero)">2</button></ion-col>
@@ -31,7 +37,7 @@
 		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(7,numero)">7</button></ion-col>
 		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(8,numero)">8</button></ion-col>
 		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(9,numero)">9</button></ion-col>
-	</ion-row>		
+	</ion-row>
 	<ion-row>
 		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber('.',numero)">.</button></ion-col>
 		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(0,numero)">0</button></ion-col>

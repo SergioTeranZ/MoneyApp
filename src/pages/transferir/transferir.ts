@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ProfileData } from '../../providers/profile-data';
+import { FormControl } from '@angular/forms';
 /*
   Generated class for the Transferir page.
 
@@ -21,6 +22,7 @@ export class TransferirPage {
 	esFor : boolean = false;
   submitAttempt: boolean = false;
   numberChanged: boolean = false;
+  diff: any;
 
   constructor(public nav: NavController,public profileData: ProfileData,public formBuilder: FormBuilder,) {
   	this.nav = nav;
@@ -33,7 +35,7 @@ export class TransferirPage {
     });
 
      this.numForm = formBuilder.group({
-        numero: ['', Validators.compose([Validators.required])]
+        numero: ['', Validators.compose([,Validators.required])]
       });
   }
 
@@ -45,13 +47,8 @@ export class TransferirPage {
     console.log('Hello TransferirPage Page');
   }
 
-  saldoSuficiente(){
-  	if(+this.valor > this.saldo){
-  		console.log('diferencia',this.valor-this.saldo);
-  		return false;
-  	}else{
-  		return true;
-  	}
+  saldoSuficiente(f : FormControl){
+  	return ( +this.valor > this.saldo)? true : false;
   }
 
   inputNumber(n: any,input){
@@ -80,6 +77,7 @@ export class TransferirPage {
   			this.esFor = true;
   		}
   	}
+  	this.diff = this.saldo - (+this.valor);
   }
 
   delInput(){
@@ -91,6 +89,6 @@ export class TransferirPage {
   			this.esDec = false;
   		}
   	}
-  	console.log('valor = ',this.valor)
+  	this.diff = this.saldo - (+this.valor);
   }
 }

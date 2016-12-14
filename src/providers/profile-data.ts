@@ -20,7 +20,6 @@ export class ProfileData {
   * se usa par atraer la info del usuario a la pagina
   */
   getUserProfile(): any {
-    console.log('hohoho:',this.currentUser);
     return this.userProfile.child(this.currentUser.uid);
   }
 

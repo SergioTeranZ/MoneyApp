@@ -20,7 +20,6 @@ export class HomePage {
 
     this.profileData.getUserProfile().on('value', (data) => {
       this.userProfile = data.val();
-      console.log('userProfile:',this.userProfile);
       this.birthDate = this.userProfile.birthDate;
     });
 
