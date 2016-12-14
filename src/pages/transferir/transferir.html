@@ -14,19 +14,23 @@
 	</ion-list-header>
 	<form [formGroup]="numForm" novalidate>
 	<ion-row>
-		<ion-input #numero formControlName="numero" type="number" (ngModel)="valor" [value]="valor" (change)="numChanged()"placeholder="00.00" [class.invalid]="!saldoSuficiente() && (numberChanged || submitAttempt)" id="numbers-input">
+		<ion-input #numero formControlName="numero" type="number" (ngModel)="valor" [value]="valor" (change)="numChanged()"placeholder="00.00" [class.invalid]="saldoSuficiente() && (numberChanged || submitAttempt)" id="numbers-input">
 		</ion-input>
+	</ion-row>
 	
-	
-	<ion-fab right edge>
+	<ion-row>	
+	<ion-fab right edge *ngIf="saldoSuficiente() && !esCero">
     	<button ion-fab (click)="goToConfirmacion(userProfile,userSelected,valor)"><ion-icon name="send"></ion-icon></button>
     </ion-fab>
 	
-	</ion-row>
+	<ion-fab right edge *ngIf="!saldoSuficiente() || esCero">
+    	<button ion-fab class="deselected"><ion-icon name="send"></ion-icon></button>
+    </ion-fab>
+    </ion-row>
 
 	<ion-row style="font-size: 1.3em;margin-top: -1.5em;text-align: center;">
-	<ion-label *ngIf="saldoSuficiente()" class='wrong-cant'>Te quedan {{diff}}</ion-label>
-	<ion-label *ngIf="!saldoSuficiente()" >Te quedan {{diff}}</ion-label>
+	<ion-label *ngIf="!saldoSuficiente()" class='wrong-cant'>Te quedan {{diff}}</ion-label>
+	<ion-label *ngIf="saldoSuficiente()" >Te quedan {{diff}}</ion-label>
 	</ion-row>
 
 	<ion-row>

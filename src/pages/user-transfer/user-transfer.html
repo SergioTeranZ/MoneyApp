@@ -13,11 +13,13 @@
 
 	
 
-	<ion-searchbar (ionInput)="getItems($event)" placeholder="Usuario"></ion-searchbar>
-	
-	<ion-fab right edge>
-    	<button ion-fab (click)="goToTransfer(currUser,userSelected)"><ion-icon name="send"></ion-icon></button>
-    </ion-fab>
+	<ion-searchbar (ionInput)="getItems($event)" (ionCancel)="userSelected=null" [value]="userSelected?.email" placeholder="Usuario"></ion-searchbar>
+<ion-grid>
+<ion-row>
+	<ion-fab *ngIf="userSelected" right><button ion-fab (click)="goToTransfer(currUser,userSelected)"><ion-icon name="send"></ion-icon></button></ion-fab>
+	<ion-fab *ngIf="!userSelected" right><button class="deslected" ion-fab><ion-icon name="send"></ion-icon></button></ion-fab>
+</ion-row>
+
 	<ion-row style="font-size: 1.2em;margin-top: -3em;margin-bottom: 1em;text-align: center;max-width: 100%;">
 	<ion-col width-80 offset-10 style="color:#fff;">
 	Introduce el correo de la persona a la que quieres transferir
@@ -29,5 +31,5 @@
 	    <h3 style="font-size: 1em;"> Correo: <strong>{{ user.email }}</strong> </h3>
 	  </ion-item>
 	</ion-list>
-
+</ion-grid>
 </ion-content>

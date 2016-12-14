@@ -22,6 +22,7 @@ export class TransferirPage {
 	public saldo: any;
 	esDec : boolean = false;
 	esFor : boolean = false;
+	esCero : boolean = true;
   submitAttempt: boolean = false;
   numberChanged: boolean = false;
   diff: any;
@@ -48,7 +49,7 @@ export class TransferirPage {
   }
 
   saldoSuficiente(f : FormControl){
-  	return ( +this.valor > this.saldo)? true : false;
+  	return ( +this.valor < this.saldo)? true : false;
   }
 
   inputNumber(n: any,input){
@@ -76,19 +77,27 @@ export class TransferirPage {
   			this.esFor = true;
   		}
   	}
+		this.esCero = false;	
   	this.diff = this.saldo - (+this.valor);
+  	if(+this.diff == this.saldo){this.esCero = true;}
   }
 
   delInput(){
   	if( this.valor != "" ){
+  		
+  		
   		if (this.valor[this.valor.length-2] != "."){
   			this.valor = this.valor.slice(0,-1);
   		}else{
   			this.valor = this.valor.slice(0,-2);
   			this.esDec = false;
   		}
+  	
+  	}else{
+  		this.esCero = true;
   	}
   	this.diff = this.saldo - (+this.valor);
+  	if(+this.diff == this.saldo){this.esCero = true;}
   }
 
   goToConfirmacion(userProfile,userSelected,valor){

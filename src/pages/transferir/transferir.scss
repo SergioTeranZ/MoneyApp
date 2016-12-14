@@ -1,4 +1,5 @@
 $rojo : #FF1924 ;
+$deselected: #383A52;
 page-transferir {
 	#numbers-input{
 		width: 100%;
@@ -23,4 +24,12 @@ page-transferir {
 		margin-top: 1em;
 	}
 
+	ion-fab button.fab.fab-md{
+		top: -7em;
+	}
+
+
+	.deselected{
+		background-color:$deselected; 
+	}
 }
