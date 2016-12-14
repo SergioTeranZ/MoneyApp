@@ -45,12 +45,11 @@ export class ConfirmacionPage {
 	}
 
   proceedTranfer(){
-
-  	var saldoSele : any = +this.valor + this.userSelected.saldo;
-  	var saldoCurr : any =  this.userProfile.saldo  - this.valor;
-  	
-  	saldoCurr = String(saldoCurr);
+  	var saldoSele : any = +this.userSelected.saldo - (-this.valor);
   	saldoSele = String(saldoSele);
+
+  	var saldoCurr : any =  this.userProfile.saldo  - this.valor;
+  	saldoCurr = String(saldoCurr);
 
   	this.userRef.child(this.userProfile.key).update({ saldo: saldoCurr, });
   	this.userRef.child(this.userSelected.key).update({ saldo: saldoSele, });
