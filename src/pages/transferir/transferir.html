@@ -16,8 +16,14 @@
 	<ion-row>
 		<ion-input #numero formControlName="numero" type="number" (ngModel)="valor" [value]="valor" (change)="numChanged()"placeholder="00.00" [class.invalid]="!saldoSuficiente() && (numberChanged || submitAttempt)" id="numbers-input">
 		</ion-input>
-	</ion-row>
 	
+	
+	<ion-fab right edge>
+    	<button ion-fab><ion-icon name="send"></ion-icon></button>
+    </ion-fab>
+	
+	</ion-row>
+
 	<ion-row style="font-size: 1.5em;margin-top: -1.5em;text-align: center;">
 	<ion-label *ngIf="saldoSuficiente()" class='wrong-cant'>Te quedan {{diff}}</ion-label>
 	<ion-label *ngIf="!saldoSuficiente()" >Te quedan {{diff}}</ion-label>
