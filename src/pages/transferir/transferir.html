@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Transferencia
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<ion-grid>
+    <ion-list-header style="font-size: 2em;">
+	Cuanto quieres transferir
+	</ion-list-header>
+	<form [formGroup]="numForm" novalidate>
+	<ion-row>
+		<ion-input #numero formControlName="numero" type="number" (ngModel)="valor" [value]="valor" (change)="numChanged()"placeholder="00.00" [class.invalid]="!saldoSuficiente() && (numberChanged || submitAttempt)" id="numbers-input">
+		</ion-input>
+	</ion-row>
+	<ion-row>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(1,numero)">1</button></ion-col>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(2,numero)">2</button></ion-col>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(3,numero)">3</button></ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(4,numero)">4</button></ion-col>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(5,numero)">5</button></ion-col>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(6,numero)">6</button></ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(7,numero)">7</button></ion-col>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(8,numero)">8</button></ion-col>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(9,numero)">9</button></ion-col>
+	</ion-row>		
+	<ion-row>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber('.',numero)">.</button></ion-col>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="inputNumber(0,numero)">0</button></ion-col>
+		<ion-col width-33><button block ion-button class="number-btn" (click)="delInput()"> <ion-icon name="ios-backspace-outline"></ion-icon></button></ion-col>
+	</ion-row>
+	</form>
+</ion-grid>
+</ion-content>

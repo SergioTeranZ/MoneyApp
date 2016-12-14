@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ProfileData } from '../../providers/profile-data';
 import { AuthData } from '../../providers/auth-data';
 import { StartPage } from '../start/start';
+import { TransferirPage } from '../transferir/transferir';
 
 @Component({
   selector: 'page-home',
@@ -116,5 +117,10 @@ export class HomePage {
       this.userProfile = null;
 	  });
 	}
+
+  goToTransferir(){
+    this.nav.push(TransferirPage);
+  }
+
 
 }

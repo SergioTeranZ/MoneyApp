@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Coin App
+      Perfil
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="logOut()">
@@ -18,10 +18,16 @@
      <span class="saldo"><ion-icon name="star-outline"></ion-icon> {{userProfile?.saldo}}</span>
 
   </ion-item>
-  <ion-row style="border-top: 0.1px solid #B7B7B7;">
-      <ion-col width-50 style="margin-left:25%;">
-      <button ion-button block clear>
+  <ion-row style="border-top: 0.1px solid #B7B7B7;text-align: center;">
+    <!-- <ion-col width-50>
+      <button ion-button clear>
         <ion-icon name="time" style="font-size: 2em;margin-right: 0.5em;"></ion-icon><b> Historial</b>
+      </button>
+    </ion-col> -->
+  
+    <ion-col width-100>
+      <button ion-button clear (click)="goToTransferir()">
+        <ion-icon name="send" style="font-size: 2em;margin-right: 0.5em;"></ion-icon><b> Transferir</b>
       </button>
     </ion-col>
   </ion-row>
