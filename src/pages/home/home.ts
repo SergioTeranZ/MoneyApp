@@ -1,9 +1,10 @@
-import { NavController,AlertController } from 'ionic-angular';
+import { NavController,AlertController,NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { ProfileData } from '../../providers/profile-data';
 import { AuthData } from '../../providers/auth-data';
 import { StartPage } from '../start/start';
 import { TransferirPage } from '../transferir/transferir';
+import { UserTransferPage } from '../user-transfer/user-transfer';
 
 @Component({
   selector: 'page-home',
@@ -14,7 +15,7 @@ export class HomePage {
   public birthDate: string;
   public saldo: any;
 
-  constructor(public nav: NavController,public profileData: ProfileData,public authData: AuthData,public alertCtrl: AlertController) {
+  constructor(public nav: NavController, public navParams: NavParams,public profileData: ProfileData,public authData: AuthData,public alertCtrl: AlertController) {
     this.nav = nav;
     this.profileData = profileData;
 
@@ -117,8 +118,8 @@ export class HomePage {
 	  });
 	}
 
-  goToTransferir(){
-    this.nav.push(TransferirPage);
+  goToUserTransferir(userProfile){
+    this.nav.push(UserTransferPage,{userProfile: userProfile});
   }
 
 

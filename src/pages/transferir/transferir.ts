@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ProfileData } from '../../providers/profile-data';
 import { FormControl } from '@angular/forms';
@@ -24,15 +24,12 @@ export class TransferirPage {
   numberChanged: boolean = false;
   diff: any;
 
-  constructor(public nav: NavController,public profileData: ProfileData,public formBuilder: FormBuilder,) {
+  constructor(public nav: NavController,public navParams: NavParams,public profileData: ProfileData,public formBuilder: FormBuilder,) {
   	this.nav = nav;
     this.profileData = profileData;
 
-    this.profileData.getUserProfile().on('value', (data) => {
-      this.userProfile = data.val();
-      console.log('userProfile:',this.userProfile);
-      this.saldo = this.userProfile.saldo;
-    });
+    this.userProfile = navParams.get('userProfile');
+    this.saldo = this.userProfile.saldo;
 
      this.numForm = formBuilder.group({
         numero: ['', Validators.compose([,Validators.required])]
