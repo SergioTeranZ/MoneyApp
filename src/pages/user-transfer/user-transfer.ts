@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { TransferirPage } from '../transferir/transferir';
+//import { UsersData } from '../../providers/users-data';
+import firebase from 'firebase';
+
+
 
 /*
   Generated class for the UserTransfer page.
@@ -12,19 +16,69 @@ import { TransferirPage } from '../transferir/transferir';
   selector: 'page-user-transfer',
   templateUrl: 'user-transfer.html'
 })
+
 export class UserTransferPage {
 	currUser: any;
+	userRef: any;
+	
+	userList: any;
+	loadedUserList: any;
 
   constructor(public nav: NavController,public navParams: NavParams) {
+    //this.userData = UsersData;
     this.currUser = navParams.get('userProfile');
-    console.log(this.currUser.saldo);
+    this.userRef = firebase.database().ref('/userProfile');
+
+
+		this.userRef.on('value', usersList => {
+		  let users = [];
+		  usersList.forEach( user => {
+		    users.push(user.val());
+		  });
+
+		  this.userList = users;
+		  this.loadedUserList = users;
+		});
+
+
+    console.log('->',this.userList);
   }
 
   ionViewDidLoad() {
     console.log('Hello UserTransferPage Page');
   }
 
+	initializeItems(){
+  	this.userList = this.loadedUserList;
+	}
+
 	goToTransfer(userProfile){
     this.nav.push(TransferirPage,{userProfile: userProfile});
 	}
+
+	getItems(searchbar) {
+  // Reset items back to all of the items
+  this.initializeItems();
+
+  // set q to the value of the searchbar
+  var q = searchbar.srcElement.value;
+
+
+  // if the value is an empty string don't filter the items
+  if (!q) {
+    return;
+  }
+
+  this.userList = this.userList.filter((v) => {
+    if(v.email && q) {
+      if (v.email.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        return true;
+      }
+      return false;
+    }
+  });
+
+  console.log(q, this.userList.length);
+
+}
 }

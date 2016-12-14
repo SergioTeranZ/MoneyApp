@@ -15,6 +15,8 @@ import { UserTransferPage } from '../pages/user-transfer/user-transfer';
 
 import { AuthData } from '../providers/auth-data';
 import { ProfileData } from '../providers/profile-data';
+import { UsersData } from '../providers/users-data';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { ProfileData } from '../providers/profile-data';
   providers: [
     [{provide: ErrorHandler, useClass: IonicErrorHandler}],
     AuthData, 
-    ProfileData
+    ProfileData,
+    UsersData
   ]
 })
 export class AppModule {}

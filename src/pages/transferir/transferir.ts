@@ -56,7 +56,6 @@ export class TransferirPage {
   	if (this.esDec) {																			// El string es decimal
   		if(this.valor.slice(-2) == '.0' && this.esFor){										// tiene un 0 forzado
   			if ( n != "." ){																	// n es un numero
-  				console.log('n:',n);
   				this.valor = this.valor.slice(0,-1) + n;				// -> borrro el 0 pongo n
   				if( n ='0'){this.esFor = false;}
   			}																									// -> skip
