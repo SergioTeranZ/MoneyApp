@@ -1,7 +1,24 @@
 page-user-transfer {
 	.searchbar-md .searchbar-input{
-		background-color: rgba(0,0,0,0);
+		width: 100%;
+		background:transparent;
+		border-style: none;
+		border-bottom: 0.3px solid #fff;
+		color: #fff;
+		font-size: 5em;
+		margin-bottom: 1em;
 		box-shadow: none;
-		border-bottom: 0.3em solid #fff;
+		text-align: left;
+	}
+
+	.searchbar-md .searchbar-search-icon{
+		width: 4em;
+		height: 4em;
+		left: -2%;
+
+	}
+
+	.searchbar-md .searchbar-search-icon, .searchbar-md .searchbar-md-cancel{
+		background-size: 5em;
 	}
 }

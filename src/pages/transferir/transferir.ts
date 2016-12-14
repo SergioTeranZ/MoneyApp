@@ -16,6 +16,7 @@ import { FormControl } from '@angular/forms';
 export class TransferirPage {
  	public numForm;
   public userProfile: any;
+  public userSelected: any;
 	public valor: any = "";
 	public saldo: any;
 	esDec : boolean = false;
@@ -29,6 +30,7 @@ export class TransferirPage {
     this.profileData = profileData;
 
     this.userProfile = navParams.get('userProfile');
+    this.userSelected = navParams.get('userSelected');
     this.saldo = this.userProfile.saldo;
 
      this.numForm = formBuilder.group({

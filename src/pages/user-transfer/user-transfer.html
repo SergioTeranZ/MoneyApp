@@ -8,18 +8,23 @@
 
 
 <ion-content padding>
-    <ion-list-header style="font-size: 2em;">
-	A quien le quieres transferir
-	</ion-list-header>
+    <ion-list-header *ngIf="!userSelected" style="font-size: 2em;">A quien le quieres transferir</ion-list-header>
+    <ion-list-header *ngIf="userSelected" style="font-size: 2em;">Transferir a {{ userSelected.firstName }}</ion-list-header>
 
 	
-	<ion-fab right edge>
-    	<button ion-fab (click)="goToTransfer(currUser)"><ion-icon name="send"></ion-icon></button>
-    </ion-fab>
 
-	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+	<ion-searchbar (ionInput)="getItems($event)" placeholder="Usuario"></ion-searchbar>
+	
+	<ion-fab right edge>
+    	<button ion-fab (click)="goToTransfer(currUser,userSelected)"><ion-icon name="send"></ion-icon></button>
+    </ion-fab>
+	<ion-row style="font-size: 1.2em;margin-top: -3em;margin-bottom: 1em;text-align: center;max-width: 100%;">
+	<ion-col width-80 offset-10 style="color:#fff;">
+	Introduce el correo de la persona a la que quieres transferir
+	</ion-col>
+	</ion-row>
 	<ion-list>
-	  <ion-item *ngFor="let user of userList">
+	  <ion-item *ngFor="let user of userList" (click)="selectUser(user)">
 	    <h2 style="font-size: 1.5em;"> {{ user.firstName }} {{ user.lastName }} </h2>
 	    <h3 style="font-size: 1em;"> Correo: <strong>{{ user.email }}</strong> </h3>
 	  </ion-item>

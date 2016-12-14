@@ -20,6 +20,7 @@ import firebase from 'firebase';
 export class UserTransferPage {
 	currUser: any;
 	userRef: any;
+	userSelected: any = null;
 	
 	userList: any;
 	loadedUserList: any;
@@ -35,13 +36,9 @@ export class UserTransferPage {
 		  usersList.forEach( user => {
 		    users.push(user.val());
 		  });
-
 		  this.userList = users;
 		  this.loadedUserList = users;
 		});
-
-
-    console.log('->',this.userList);
   }
 
   ionViewDidLoad() {
@@ -52,33 +49,36 @@ export class UserTransferPage {
   	this.userList = this.loadedUserList;
 	}
 
-	goToTransfer(userProfile){
-    this.nav.push(TransferirPage,{userProfile: userProfile});
+	goToTransfer(userProfile,userSelected){
+    this.nav.push(TransferirPage,{userProfile: userProfile,userSelected:userSelected});
 	}
 
 	getItems(searchbar) {
-  // Reset items back to all of the items
-  this.initializeItems();
+	  // Reset items back to all of the items
+	  this.initializeItems();
 
-  // set q to the value of the searchbar
-  var q = searchbar.srcElement.value;
+	  // set q to the value of the searchbar
+	  var q = searchbar.srcElement.value;
 
 
-  // if the value is an empty string don't filter the items
-  if (!q) {
-    return;
-  }
+	  // if the value is an empty string don't filter the items
+	  if (!q || q ==" ")  {
+	    return;
+	  }
 
-  this.userList = this.userList.filter((v) => {
-    if(v.email && q) {
-      if (v.email.toLowerCase().indexOf(q.toLowerCase()) > -1) {
-        return true;
-      }
-      return false;
-    }
-  });
+	  this.userList = this.userList.filter((v) => {
+	    if(v.email && q) {
+	      if (v.email.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+	        return true;
+	      }
+	      return false;
+	    }
+	  });
+	}
 
-  console.log(q, this.userList.length);
+	selectUser(user){
+		this.userSelected = user;
+		console.log('->',this.userSelected);
+	}
 
-}
 }
